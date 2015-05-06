@@ -1,7 +1,9 @@
+<%= paginate @mark %>
+<%= page_entries_info @mark %>
 <h3><%= @post.title %></h3>
 
 <p>
-  <%= @post.body %><%= @post.author.email if @post.author %>
+  <%= @post.body %>
 </p>
 
 <div class="pull-right">
@@ -11,17 +13,13 @@
 
 <h3>Reply (<%= @post.replies_count %>):</h3>
 <ul>
-  <!--% @post.replies.each do |reply| %-->
-  <% @mark.each do |reply| %>
+  <% @post.replies.each do |reply| %>
   <li>
     <strong><%= reply.author.try(:email) or "Anonymous" %>:</strong>
     <%= reply.body %>
   </li>
   <% end -%>
 </ul>
-<%= paginate @mark %>
-<%= page_entries_info @mark %>
-</p>
 
 <%= form_for Reply.new, url: reply_post_path do |f| %>
   <%= f.text_area :body %>

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :reply]
   before_action :authenticate_user!
-  #load_and_authorize_resource
+  load_and_authorize_resource
 
    # GET /posts
   def index
@@ -83,3 +83,4 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :body)
     end
 end
+

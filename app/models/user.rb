@@ -34,9 +34,9 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
-  #VALID_ROLES = [:admin, :everyone]
+  VALID_ROLES = [:admin, :everyone]
   field :role, type: Symbol
-  #validates_inclusion_of :role, :in => VALID_ROLES
+  validates_inclusion_of :role, :in => VALID_ROLES
 
   def admin?
     role == :admin
